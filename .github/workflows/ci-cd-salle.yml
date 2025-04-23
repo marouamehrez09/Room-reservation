@@ -1,0 +1,27 @@
+name: CI/CD Pipeline - Salle Service
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Récupérer le code du projet
+      uses: actions/checkout@v3
+
+    - name: Se connecter à Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Construire et envoyer l'image Docker du salle-service
+      uses: docker/build-push-action@v5
+      with:
+        context: ./salle-service
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/salle-service:latest
