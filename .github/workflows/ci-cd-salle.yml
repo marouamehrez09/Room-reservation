@@ -26,5 +26,5 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/salle-service:latest
     - name: Deploy to Kubernetes with Helm
-        run: |
+      run: |
               helm upgrade --install salle-service ./helm/salle-service

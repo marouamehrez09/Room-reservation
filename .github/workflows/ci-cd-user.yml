@@ -26,5 +26,5 @@ jobs:
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/user-service:latest
     - name: Deploy to Kubernetes with Helm
-        run: |
+      run: |
             helm upgrade --install user-service ./helm/user-service
