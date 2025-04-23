@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: salle-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: salle
+  template:
+    metadata:
+      labels:
+        app: salle
+    spec:
+      containers:
+        - name: salle
+          image: salle-service:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5001

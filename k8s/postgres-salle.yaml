@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-salle
+  labels:
+    app: postgres-salle
+spec:
+  containers:
+    - name: postgres-salle
+      image: postgres
+      ports:
+        - containerPort: 5432
+      env:
+        - name: POSTGRES_DB
+          value: salledb
+        - name: POSTGRES_USER
+          value: user
+        - name: POSTGRES_PASSWORD
+          value: password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-salle
+spec:
+  selector:
+    app: postgres-salle
+  ports:
+    - port: 5432
+      targetPort: 5432
