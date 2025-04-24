@@ -13,14 +13,11 @@ jobs:
     - name: 📥 Cloner le dépôt
       uses: actions/checkout@v3
 
-    - name: 🐳 Installer Docker
-      uses: docker/setup-buildx-action@v3
-
     - name: 📦 Installer KinD
-      uses: engineerd/setup-kind@v0.5.0
+      uses: helm/kind-action@v1.4.0
 
     - name: 🚀 Créer un cluster KinD
-      run: kind create cluster
+      run: kind create cluster --config kind-config.yaml
 
     - name: 🔧 Installer Helm
       uses: azure/setup-helm@v3
