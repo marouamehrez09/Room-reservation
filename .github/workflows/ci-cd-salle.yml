@@ -25,10 +25,10 @@ jobs:
         context: ./salle-service
         push: true
         tags: ${{ secrets.DOCKER_USERNAME }}/salle-service:latest
-    - name: Configure kubeconfig
-      run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG_CONTENT }}" > ~/.kube/config
-    - name: Deploy to Kubernetes with Helm
-      run: |
-              helm upgrade --install salle-service ./helm/salle-service
+  #  - name: Configure kubeconfig
+  #    run: |
+  #        mkdir -p ~/.kube
+  #        echo "${{ secrets.KUBECONFIG_CONTENT }}" > ~/.kube/config
+  #  - name: Deploy to Kubernetes with Helm
+  #    run: |
+  #            helm upgrade --install salle-service ./helm/salle-service
